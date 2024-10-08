@@ -12,11 +12,11 @@ size = Vector3(32, 0.17, 32)
 
 [node name="Player" parent="." instance=ExtResource("1_rawy0")]
 
-[node name="TempFloor" type="Node3D" parent="."]
+[node name="Temp Floor" type="StaticBody3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TempFloor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Temp Floor"]
 mesh = SubResource("BoxMesh_yl4hc")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TempFloor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Temp Floor"]
 shape = SubResource("BoxShape3D_7fkv8")
