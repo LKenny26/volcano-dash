@@ -1,3 +1,22 @@
-[gd_scene format=3 uid="uid://dxwq12dx76gxo"]
+[gd_scene load_steps=4 format=3 uid="uid://dxwq12dx76gxo"]
+
+[ext_resource type="PackedScene" uid="uid://cqd8d4gfj033r" path="res://Player.tscn" id="1_rawy0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yl4hc"]
+size = Vector3(32, 0.17, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7fkv8"]
+size = Vector3(32, 0.17, 32)
 
 [node name="Main" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_rawy0")]
+
+[node name="TempFloor" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TempFloor"]
+mesh = SubResource("BoxMesh_yl4hc")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TempFloor"]
+shape = SubResource("BoxShape3D_7fkv8")
