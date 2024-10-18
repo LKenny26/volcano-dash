@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxwq12dx76gxo"]
+[gd_scene load_steps=4 format=3 uid="uid://dxwq12dx76gxo"]
+
+[ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="1_cdsq0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j0vwy"]
 size = Vector3(100, 100, 1)
@@ -10,6 +12,7 @@ size = Vector3(100, 100, 1)
 
 [node name="Walls" type="Node3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+visible = false
 
 [node name="Wall1" type="StaticBody3D" parent="Walls"]
 
@@ -67,3 +70,6 @@ mesh = SubResource("BoxMesh_j0vwy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall6"]
 shape = SubResource("BoxShape3D_f0q57")
+
+[node name="volcano" type="Node3D" parent="." instance=ExtResource("1_cdsq0")]
+transform = Transform3D(-150, 2.26494e-05, 0, -2.26494e-05, -150, 0, 0, 0, 150, 5.893, -60, 250)
