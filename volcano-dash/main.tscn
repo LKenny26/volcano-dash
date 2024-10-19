@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxwq12dx76gxo"]
+[gd_scene load_steps=5 format=3 uid="uid://dxwq12dx76gxo"]
 
-[ext_resource type="PackedScene" uid="uid://cqd8d4gfj033r" path="res://Player.tscn" id="1_rawy0"]
+[ext_resource type="PackedScene" uid="uid://b0qj5o4jtbi1l" path="res://Player.tscn" id="2_sjh21"]
+[ext_resource type="Script" path="res://player.gd" id="3_rjxo6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yl4hc"]
 size = Vector3(32, 0.17, 32)
@@ -10,7 +11,9 @@ size = Vector3(32, 0.17, 32)
 
 [node name="Main" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_rawy0")]
+[node name="Player" parent="." instance=ExtResource("2_sjh21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05485, 0)
+script = ExtResource("3_rjxo6")
 
 [node name="Temp Floor" type="StaticBody3D" parent="."]
 
