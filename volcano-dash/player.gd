@@ -9,7 +9,7 @@ const walk_speed = 20.0 # default speed
 const sprint_speed = 30.0 # speed when player sprints
 const crouch_speed = 17.0 # speed when player crouches
 const jump_velocity = 8.0
-const mouse_sense = 0.3 # mouse sensitivity
+const mouse_sense = 0.25 # mouse sensitivity
 var crouch_height = -0.75 # height camera will go down by while player is crouching
 var lerp_speed = 10.0 # helps "transition" between movements look smoother
 
