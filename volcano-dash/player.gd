@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var head = $Head
 @onready var standing_collision = $StandingCollisionShape
 @onready var crouching_collision = $CrouchingCollisionShape # disabled on start
-
+@onready var ray_cast = $RayCast3D # will use to check if there's an obj above the user while crouching
 var curr_speed = 5.0 # will change based on if player is walking/sprinting/crouching
 const walk_speed = 5.0 # default speed
 const sprint_speed = 7.5 # speed when player sprints
@@ -32,8 +32,8 @@ func _physics_process(delta: float) -> void:
 		head.position.y = lerp(head.position.y, crouch_height, delta*lerp_speed)
 		standing_collision.disabled = true # turn off standing collision shape
 		crouching_collision.disabled = false # turn on crouching collision shape
-	# sets speed when player is sprinting/walking
-	else:
+	# checks if there's an object above the player while they're crouching
+	elif !ray_cast.is_colliding():
 		head.position.y = lerp(head.position.y, 0.0, delta*lerp_speed) # original camera height
 		standing_collision.disabled = false # turn on standing collision shape
 		crouching_collision.disabled = true # turn off crouching collision shape
