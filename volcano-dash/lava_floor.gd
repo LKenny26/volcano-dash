@@ -18,8 +18,9 @@ func _process(delta: float) -> void:
 		damage_timer += delta
 		if damage_timer >= damage_interval:
 			if player.has_method("apply_damage"):
-				player.apply_damage(lava_damage)
-				damage_timer = 0.0
+				if player.player_health > 0:
+					player.apply_damage(lava_damage)
+					damage_timer = 0.0
 
 func _on_body_entered(body: Node3D) -> void:
 	if body == player:
