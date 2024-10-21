@@ -1,17 +1,7 @@
-<<<<<<< HEAD
 [gd_scene load_steps=29 format=3 uid="uid://dxwq12dx76gxo"]
 
 [ext_resource type="PackedScene" uid="uid://b0qj5o4jtbi1l" path="res://Player.tscn" id="1_1fo4v"]
 [ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="1_cdsq0"]
-=======
-
-[gd_scene load_steps=11 format=3 uid="uid://dxwq12dx76gxo"]
-
-[ext_resource type="PackedScene" uid="uid://b0qj5o4jtbi1l" path="res://Player.tscn" id="1_1fo4v"]
-[ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="1_cdsq0"]
-[ext_resource type="Script" path="res://lava_floor.gd" id="3_fuseh"]
-[ext_resource type="Texture2D" uid="uid://chguhvv1c8saq" path="res://lava.png" id="4_y366s"]
->>>>>>> e2e43fd668b7b346fbe2bc296cbb2edb114cc2a4
 [ext_resource type="Script" path="res://main.gd" id="1_kndyr"]
 [ext_resource type="Texture2D" uid="uid://ckro7j20n01fa" path="res://resources/LAVAFIELDS/Lava 03 FULL.png" id="2_k1ocx"]
 [ext_resource type="Texture2D" uid="uid://cl6m421ad1w0" path="res://resources/LAVAFIELDS/Lava 01 FULL.png" id="2_xer16"]
@@ -29,10 +19,6 @@ sky = SubResource("Sky_385c8")
 ambient_light_energy = 5.0
 fog_light_color = Color(0.27, 0.24984, 0.2484, 1)
 volumetric_fog_detail_spread = 6.0
-<<<<<<< HEAD
-=======
-
->>>>>>> e2e43fd668b7b346fbe2bc296cbb2edb114cc2a4
 
 [sub_resource type="BoxMesh" id="BoxMesh_j0vwy"]
 size = Vector3(100, 100, 1)
@@ -40,20 +26,6 @@ size = Vector3(100, 100, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_f0q57"]
 size = Vector3(100, 100, 1)
 
-<<<<<<< HEAD
-=======
-[sub_resource type="BoxShape3D" id="BoxShape3D_037qb"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsk35"]
-albedo_texture = ExtResource("4_y366s")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7iegl"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_khsmq"]
-material = SubResource("StandardMaterial3D_7iegl")
-size = Vector2(400, 400)
-
->>>>>>> e2e43fd668b7b346fbe2bc296cbb2edb114cc2a4
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0mpm"]
 albedo_texture = ExtResource("2_k1ocx")
 
@@ -95,7 +67,6 @@ size = Vector3(0.25, 1, 175)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1pudp"]
 size = Vector3(0.25, 1, 175)
-<<<<<<< HEAD
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybt3w"]
 albedo_texture = ExtResource("2_xer16")
@@ -105,8 +76,6 @@ material = SubResource("StandardMaterial3D_ybt3w")
 size = Vector2(400, 400)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cq5ol"]
-=======
->>>>>>> e2e43fd668b7b346fbe2bc296cbb2edb114cc2a4
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_kndyr")
@@ -190,26 +159,6 @@ shape = SubResource("BoxShape3D_f0q57")
 [node name="volcano" parent="." instance=ExtResource("1_cdsq0")]
 transform = Transform3D(-150, 2.26494e-05, 0, -2.26494e-05, -150, 0, 0, 0, 150, 5, -115, 250)
 
-<<<<<<< HEAD
-=======
-[node name="LavaFloor" type="Area3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -277.259, 256.226)
-script = ExtResource("3_fuseh")
-player = NodePath("../Player")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaFloor"]
-transform = Transform3D(400, 0, 0, 0, 1, 0, 0, 0, 400, 14.7176, 31.6038, -6.42534)
-shape = SubResource("BoxShape3D_037qb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LavaFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9205, 29.7949, -8.33759)
-material_override = SubResource("StandardMaterial3D_hsk35")
-mesh = SubResource("PlaneMesh_khsmq")
-
-[connection signal="body_entered" from="LavaFloor" to="LavaFloor" method="_on_body_entered"]
-[connection signal="body_exited" from="LavaFloor" to="LavaFloor" method="_on_body_exited"]
-
->>>>>>> e2e43fd668b7b346fbe2bc296cbb2edb114cc2a4
 [node name="stage1" type="StaticBody3D" parent="."]
 transform = Transform3D(0.333626, -0.0353334, 0.942043, -0.0605723, 0.996428, 0.058825, -0.940758, -0.0766872, 0.330294, 57.439, -231.311, 137.816)
 
@@ -342,9 +291,5 @@ transform = Transform3D(400, 0, 0, 0, 1, 0, 0, 0, 400, 0, 269.924, 0)
 shape = SubResource("BoxShape3D_cq5ol")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-<<<<<<< HEAD
 [connection signal="body_entered" from="LavaFloor" to="LavaFloor" method="_on_body_entered"]
 [connection signal="body_exited" from="LavaFloor" to="LavaFloor" method="_on_body_exited"]
-=======
-
->>>>>>> e2e43fd668b7b346fbe2bc296cbb2edb114cc2a4
