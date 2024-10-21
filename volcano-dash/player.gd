@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 @onready var head = $Head
 @onready var standing_collision = $StandingCollisionShape
@@ -12,6 +13,8 @@ const jump_velocity = 8.0
 const mouse_sense = 0.25 # mouse sensitivity
 var crouch_height = -0.75 # height camera will go down by while player is crouching
 var lerp_speed = 10.0 # helps "transition" between movements look smoother
+var player_health = 100
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # "hides" mouse cursor so it can't be seen
@@ -61,3 +64,12 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, curr_speed)
 
 	move_and_slide()
+	
+func apply_damage(damage_amount: int) -> void:
+	player_health -= damage_amount
+	print("Player health: %d" % player_health)
+	if player_health <= 0:
+		die()
+		
+func die() -> void:
+	print("Player died!")

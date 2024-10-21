@@ -1,13 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxwq12dx76gxo"]
+[gd_scene load_steps=11 format=3 uid="uid://dxwq12dx76gxo"]
 
 [ext_resource type="PackedScene" uid="uid://b0qj5o4jtbi1l" path="res://Player.tscn" id="1_1fo4v"]
 [ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="1_cdsq0"]
+[ext_resource type="Script" path="res://lava_floor.gd" id="3_fuseh"]
+[ext_resource type="Texture2D" uid="uid://chguhvv1c8saq" path="res://lava.png" id="4_y366s"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j0vwy"]
 size = Vector3(100, 100, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f0q57"]
 size = Vector3(100, 100, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_037qb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsk35"]
+albedo_texture = ExtResource("4_y366s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7iegl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_khsmq"]
+material = SubResource("StandardMaterial3D_7iegl")
+size = Vector2(400, 400)
 
 [node name="Main" type="Node3D"]
 
@@ -76,3 +89,20 @@ shape = SubResource("BoxShape3D_f0q57")
 
 [node name="volcano" parent="." instance=ExtResource("1_cdsq0")]
 transform = Transform3D(-150, 2.26494e-05, 0, -2.26494e-05, -150, 0, 0, 0, 150, 5, -115, 250)
+
+[node name="LavaFloor" type="Area3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -277.259, 256.226)
+script = ExtResource("3_fuseh")
+player = NodePath("../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaFloor"]
+transform = Transform3D(400, 0, 0, 0, 1, 0, 0, 0, 400, 14.7176, 31.6038, -6.42534)
+shape = SubResource("BoxShape3D_037qb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LavaFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9205, 29.7949, -8.33759)
+material_override = SubResource("StandardMaterial3D_hsk35")
+mesh = SubResource("PlaneMesh_khsmq")
+
+[connection signal="body_entered" from="LavaFloor" to="LavaFloor" method="_on_body_entered"]
+[connection signal="body_exited" from="LavaFloor" to="LavaFloor" method="_on_body_exited"]
