@@ -24,6 +24,9 @@ func _input(event: InputEvent) -> void:
 		rotate_y(-deg_to_rad(event.relative.x * mouse_sense)) # lets player move camera left and right
 		head.rotate_x(-deg_to_rad(event.relative.y * mouse_sense)) # lets player move camera up and down
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89)) # locks player rotation when looking up and down
+		
+	if event.is_action_pressed("escape")	:
+		$PauseMenu.pause()
 
 func _physics_process(delta: float) -> void:
 	# sets gravity
