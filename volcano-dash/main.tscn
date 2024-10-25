@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dxwq12dx76gxo"]
+[gd_scene load_steps=34 format=3 uid="uid://dxwq12dx76gxo"]
 
 [ext_resource type="PackedScene" uid="uid://b0qj5o4jtbi1l" path="res://Player.tscn" id="1_1fo4v"]
 [ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="1_cdsq0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://boulder_follow.gd" id="6_d0c1g"]
 [ext_resource type="Script" path="res://lava_floor.gd" id="6_nx44l"]
 [ext_resource type="PackedScene" uid="uid://43x5txc0cjgm" path="res://blender/boulder/boulder.blend" id="6_us611"]
+[ext_resource type="Script" path="res://boulder_follow_2.gd" id="8_1pe8l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m12kd"]
 sky_top_color = Color(0.632831, 0.452874, 0.379348, 1)
@@ -70,13 +71,6 @@ size = Vector3(0.25, 1, 175)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1pudp"]
 size = Vector3(0.25, 1, 175)
 
-[sub_resource type="SphereMesh" id="SphereMesh_4goy0"]
-radius = 20.0
-height = 40.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_py0an"]
-radius = 20.0
-
 [sub_resource type="Curve3D" id="Curve3D_2wdjy"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8.432, 25, -25.968, 0, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -85,7 +79,7 @@ _data = {
 point_count = 3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o43rn"]
-radius = 1.09002
+radius = 1.01561
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybt3w"]
 albedo_texture = ExtResource("2_xer16")
@@ -297,30 +291,39 @@ shape = SubResource("BoxShape3D_dc4qp")
 
 [node name="stage5" type="Node3D" parent="."]
 
-[node name="rock1" type="StaticBody3D" parent="stage5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -65.4365, 224.833)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="stage5/rock1"]
-mesh = SubResource("SphereMesh_4goy0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="stage5/rock1"]
-shape = SubResource("SphereShape3D_py0an")
-
-[node name="Path3D" type="Path3D" parent="stage5"]
+[node name="FirstRockPath" type="Path3D" parent="stage5"]
 transform = Transform3D(1, 0, 0, 0, 0.996961, 0.0779023, 0, -0.0779023, 0.996961, -82.5, -147.1, 369.34)
 curve = SubResource("Curve3D_2wdjy")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="stage5/Path3D"]
+[node name="PathFollow3D" type="PathFollow3D" parent="stage5/FirstRockPath"]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 0.999999, 0, 0, 0)
 rotation_mode = 0
 script = ExtResource("6_d0c1g")
 
-[node name="boulder" parent="stage5/Path3D/PathFollow3D" instance=ExtResource("6_us611")]
+[node name="boulder" parent="stage5/FirstRockPath/PathFollow3D" instance=ExtResource("6_us611")]
 transform = Transform3D(4.75558, 0.120295, 1.53948, -1.04281, 3.9266, 2.91452, -1.13886, -3.09312, 3.75974, -0.198692, -5.15675, -0.307648)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="stage5/Path3D/PathFollow3D/boulder"]
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="stage5/FirstRockPath/PathFollow3D/boulder"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="stage5/Path3D/PathFollow3D/boulder/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage5/FirstRockPath/PathFollow3D/boulder/AnimatableBody3D"]
+transform = Transform3D(1, 1.49012e-08, -1.49012e-08, 0, 1, 0, 0, -2.98023e-08, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_o43rn")
+
+[node name="SecondRockPath" type="Path3D" parent="stage5"]
+transform = Transform3D(-0.447182, -0.0696792, 0.891725, 0, 0.996961, 0.0779023, -0.894443, 0.0348365, -0.445823, -79.273, -130.601, 330.209)
+curve = SubResource("Curve3D_2wdjy")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="stage5/SecondRockPath"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 0.999999, 0, 0, 0)
+rotation_mode = 0
+script = ExtResource("8_1pe8l")
+
+[node name="boulder" parent="stage5/SecondRockPath/PathFollow3D" instance=ExtResource("6_us611")]
+transform = Transform3D(4.75558, 0.120295, 1.53948, -1.04281, 3.9266, 2.91452, -1.13886, -3.09312, 3.75974, -0.198692, -5.15675, -0.307648)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stage5/SecondRockPath/PathFollow3D/boulder"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage5/SecondRockPath/PathFollow3D/boulder/StaticBody3D"]
 shape = SubResource("SphereShape3D_o43rn")
 
 [node name="Timer" type="Timer" parent="."]
