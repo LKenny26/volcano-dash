@@ -1,0 +1,161 @@
+[gd_scene load_steps=14 format=3 uid="uid://gvayjdawe160"]
+
+[ext_resource type="Script" path="res://menu_screen.gd" id="1_xhxec"]
+[ext_resource type="Texture2D" uid="uid://ckro7j20n01fa" path="res://resources/LAVAFIELDS/Lava 03 FULL.png" id="3_au0fx"]
+[ext_resource type="Texture2D" uid="uid://cl6m421ad1w0" path="res://resources/LAVAFIELDS/Lava 01 FULL.png" id="4_6ax8y"]
+[ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="5_lh50a"]
+[ext_resource type="FontFile" uid="uid://c10ulqs8dtt16" path="res://resources/CHE-LAVA.TTF" id="10_pcmof"]
+[ext_resource type="Script" path="res://menu.gd" id="11_m5xm0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m12kd"]
+sky_top_color = Color(0.632831, 0.452874, 0.379348, 1)
+
+[sub_resource type="Sky" id="Sky_385c8"]
+sky_material = SubResource("ProceduralSkyMaterial_m12kd")
+
+[sub_resource type="Environment" id="Environment_s4mrm"]
+background_mode = 2
+sky = SubResource("Sky_385c8")
+ambient_light_energy = 5.0
+fog_light_color = Color(0.27, 0.24984, 0.2484, 1)
+volumetric_fog_detail_spread = 6.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_j0vwy"]
+size = Vector3(100, 100, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f0q57"]
+size = Vector3(100, 100, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0mpm"]
+albedo_texture = ExtResource("3_au0fx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aiq7g"]
+albedo_texture = ExtResource("4_6ax8y")
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_xhxec")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s4mrm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.379133, 0.925342, 0, -0.925342, 0.379133, -77.743, 0, 0)
+
+[node name="Walls" type="Node3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -40.4413, 1190.1, -1259.24)
+
+[node name="Wall1" type="StaticBody3D" parent="Walls"]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall1"]
+mesh = SubResource("BoxMesh_j0vwy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall1"]
+shape = SubResource("BoxShape3D_f0q57")
+
+[node name="Wall2" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall2"]
+mesh = SubResource("BoxMesh_j0vwy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall2"]
+shape = SubResource("BoxShape3D_f0q57")
+
+[node name="Wall3" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50, 0, 50)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall3"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_j0vwy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall3"]
+shape = SubResource("BoxShape3D_f0q57")
+
+[node name="Wall4" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 0, 50)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall4"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_j0vwy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall4"]
+shape = SubResource("BoxShape3D_f0q57")
+
+[node name="Wall5" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 50, 50)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall5"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_j0vwy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall5"]
+shape = SubResource("BoxShape3D_f0q57")
+
+[node name="Wall6" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, -50, 50)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall6"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_q0mpm")
+mesh = SubResource("BoxMesh_j0vwy")
+surface_material_override/0 = SubResource("StandardMaterial3D_aiq7g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall6"]
+shape = SubResource("BoxShape3D_f0q57")
+
+[node name="volcano" parent="." instance=ExtResource("5_lh50a")]
+transform = Transform3D(-150, 2.26494e-05, 0, -2.26494e-05, -150, 0, 0, 0, 150, 5, -115, 250)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(600, 0)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -158.5
+offset_bottom = 158.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("11_m5xm0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("10_pcmof")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/normal_font_size = 64
+text = "VOLCANO DASH"
+
+[node name="play_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Play"
+
+[node name="nux_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Nux Mode"
+
+[node name="quit_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06173, -125.72, 249.888)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 219.252, 261.908, 367.148)
+
+[connection signal="pressed" from="VBoxContainer/play_button" to="VBoxContainer" method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/nux_button" to="VBoxContainer" method="_on_nux_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_button" to="VBoxContainer" method="_on_quit_button_pressed"]
