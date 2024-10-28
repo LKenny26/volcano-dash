@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0qj5o4jtbi1l"]
+[gd_scene load_steps=6 format=3 uid="uid://b0qj5o4jtbi1l"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b6dl2"]
 [ext_resource type="PackedScene" uid="uid://cvcs8nqwjr14i" path="res://menus/pause_menu.tscn" id="2_tm71d"]
@@ -8,8 +8,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k4g1w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vx6lj"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j4obp"]
+height = 1.25
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 3
@@ -22,6 +21,7 @@ mesh = SubResource("CapsuleMesh_kil6x")
 shape = SubResource("CapsuleShape3D_k4g1w")
 
 [node name="CrouchingCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366846, 0)
 shape = SubResource("CapsuleShape3D_vx6lj")
 disabled = true
 
@@ -31,8 +31,6 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.453238, -0.0977201)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_j4obp")
+target_position = Vector3(0, 2, 0)
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_tm71d")]
