@@ -119,20 +119,21 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -600.0
-offset_top = -158.5
-offset_bottom = 158.5
+offset_top = -170.5
+offset_bottom = 170.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
 script = ExtResource("11_m5xm0")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(200, 150)
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-theme_override_colors/default_color = Color(1, 0, 0, 1)
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(0.388235, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("10_pcmof")
 theme_override_font_sizes/bold_italics_font_size = 30
-theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/normal_font_size = 85
 text = "VOLCANO DASH"
 
 [node name="play_button" type="Button" parent="VBoxContainer"]
