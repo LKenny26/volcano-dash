@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dxwq12dx76gxo"]
+[gd_scene load_steps=50 format=3 uid="uid://dxwq12dx76gxo"]
 
 [ext_resource type="PackedScene" uid="uid://b0qj5o4jtbi1l" path="res://Player.tscn" id="1_1fo4v"]
 [ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="1_cdsq0"]

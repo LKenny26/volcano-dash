@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://b08r7x2m4ab7s"]
+[gd_scene load_steps=8 format=3 uid="uid://b08r7x2m4ab7s"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_f1nm1"]
-size = Vector3(8, 8, 1)
+[ext_resource type="PackedScene" uid="uid://43x5txc0cjgm" path="res://blender/boulder/boulder.blend" id="1_u7gdj"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ydft1"]
-size = Vector3(8, 8, 1)
+[sub_resource type="CylinderMesh" id="CylinderMesh_xyko5"]
+top_radius = 5.0
+bottom_radius = 5.0
+height = 8.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_68s7d"]
+height = 8.0
+radius = 5.0
 
 [sub_resource type="Curve3D" id="Curve3D_5sq1p"]
 _data = {
@@ -56,11 +61,16 @@ _data = {
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(-4.37113e-08, 0.999997, -4.37113e-08, 0, -4.37113e-08, -0.999998, -0.999997, -4.37113e-08, 1.91068e-15, 0, -0.188263, 0.0893714)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("BoxMesh_f1nm1")
+[node name="boulder" parent="CharacterBody3D" instance=ExtResource("1_u7gdj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("BoxShape3D_ydft1")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D"]
+visible = false
+mesh = SubResource("CylinderMesh_xyko5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_68s7d")
 
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_5sq1p")
