@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cib7w7y8g1naj"]
 
-[ext_resource type="PackedScene" uid="uid://b5dww5bhk04ur" path="res://blender/stage 6/fireball.blend" id="1_nylin"]
+[ext_resource type="PackedScene" uid="uid://4l1qkghs0nll" path="res://blender/stage 6/fireball.blend" id="1_nylin"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_eocba"]
 radius = 5.0
@@ -11,7 +11,7 @@ radius = 5.0
 
 [sub_resource type="Curve3D" id="Curve3D_0lvpl"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0844579, -0.00201225, 0.0224438, 0, 0, 0, 0, 0, 0, 50.6988, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0844579, -0.00201225, 0.0224438, 0, 0, 0, 0, 0, 0, 60.4102, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -57,7 +57,7 @@ _data = {
 [node name="fireball" type="Node3D"]
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
-transform = Transform3D(0.000443398, -3.97562e-05, -0.999972, -1.81892e-12, 0.999993, -3.97554e-05, 0.999961, 1.76303e-08, 0.000443403, 0.0844579, -0.00201225, 0.0224438)
+transform = Transform3D(0.000371994, -3.33562e-05, -0.999971, 0, 0.999993, -3.33554e-05, 0.99996, 1.24088e-08, 0.000371998, 0.0844579, -0.00201225, 0.0224438)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
 visible = false
@@ -73,7 +73,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 curve = SubResource("Curve3D_0lvpl")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.000443398, -3.97562e-05, -0.999972, -1.81892e-12, 0.999993, -3.97554e-05, 0.999961, 1.76303e-08, 0.000443403, 0.0844579, -0.00201225, 0.0224438)
+transform = Transform3D(0.000371994, -3.33562e-05, -0.999971, 0, 0.999993, -3.33554e-05, 0.99996, 1.24088e-08, 0.000371998, 0.0844579, -0.00201225, 0.0224438)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
 remote_path = NodePath("../../../AnimatableBody3D")

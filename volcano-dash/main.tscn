@@ -575,10 +575,10 @@ transform = Transform3D(0.544112, 0.620053, -0.565222, -0.223073, 0.756341, 0.61
 shape = SubResource("BoxShape3D_mtevl")
 
 [node name="fireball" parent="stage6" instance=ExtResource("21_x2gg6")]
-transform = Transform3D(0.350207, 0, -0.936672, 0, 1, 0, 0.936672, 0, 0.350207, -39.5201, -62.169, 152.272)
+transform = Transform3D(0.350207, 0, -0.936672, 0, 1, 0, 0.936672, 0, 0.350207, -45.3237, -62.169, 143.046)
 
 [node name="fireball2" parent="stage6" instance=ExtResource("21_x2gg6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.3242, -54.0299, 175.651)
+transform = Transform3D(-0.346625, 0, 0.938004, 0, 1, 0, -0.938004, 0, -0.346625, -4.77145, -54.0299, 182.138)
 
 [node name="fireball3" parent="stage6" instance=ExtResource("21_x2gg6")]
 transform = Transform3D(0.350207, 0, -0.936672, 0, 1, 0, 0.936672, 0, 0.350207, 4.43347, -48.6086, 134.124)
