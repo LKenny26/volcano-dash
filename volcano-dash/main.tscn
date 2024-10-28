@@ -344,6 +344,18 @@ transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 12.3137,
 [node name="MovingPlatformY2" parent="stage5" instance=ExtResource("8_4251c")]
 transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 9.3154, 28.3641, -113.253)
 
+[node name="MovingPlatformY3" parent="stage5" instance=ExtResource("8_4251c")]
+transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 16.0118, 54.8899, -147.63)
+
+[node name="Platform2" parent="stage5" instance=ExtResource("7_7ds3d")]
+transform = Transform3D(0.849368, 0, 0.527801, 0, 1, 0, -0.527801, 0, 0.849368, 24.856, 78.1868, -155.935)
+
+[node name="StaticBody3D" parent="stage5/Platform2" index="0"]
+mesh = SubResource("BoxMesh_4r4ud")
+
+[node name="CollisionShape3D" parent="stage5/Platform2" index="1"]
+shape = SubResource("BoxShape3D_ckkbe")
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
@@ -366,3 +378,4 @@ shape = SubResource("BoxShape3D_cq5ol")
 
 [editable path="stage5/MovingPlatform5"]
 [editable path="stage5/Platform"]
+[editable path="stage5/Platform2"]
