@@ -57,6 +57,7 @@ _data = {
 }
 
 [node name="MovingPlatformY" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.4941, 0)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(-4.37113e-08, 0.999997, -4.37113e-08, 0, -4.37113e-08, -0.999998, -0.999997, -4.37113e-08, 1.91068e-15, 0, -0.188263, 0.0893714)
