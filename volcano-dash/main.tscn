@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dxwq12dx76gxo"]
+[gd_scene load_steps=35 format=3 uid="uid://dxwq12dx76gxo"]
 
 [ext_resource type="PackedScene" uid="uid://b0qj5o4jtbi1l" path="res://Player.tscn" id="1_1fo4v"]
 [ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="1_cdsq0"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://183femj1r8uw" path="res://moving_platform.tscn" id="6_bjtxj"]
 [ext_resource type="Script" path="res://lava_floor.gd" id="6_nx44l"]
 [ext_resource type="PackedScene" uid="uid://tu10o6stspr5" path="res://platform.tscn" id="7_7ds3d"]
+[ext_resource type="PackedScene" uid="uid://b08r7x2m4ab7s" path="res://moving_platform_y.tscn" id="8_4251c"]
+[ext_resource type="PackedScene" uid="uid://dad4g88or1x4g" path="res://resources/moving_platform_y_down.tscn" id="9_84va5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m12kd"]
 sky_top_color = Color(0.632831, 0.452874, 0.379348, 1)
@@ -95,7 +97,7 @@ environment = SubResource("Environment_s4mrm")
 transform = Transform3D(1, 0, 0, 0, 0.379133, 0.925342, 0, -0.925342, 0.379133, -77.743, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_1fo4v")]
-transform = Transform3D(4.99997, -0.0178023, 0, 0.0178023, 4.99997, 0, 0, 0, 5, 62.9986, -226.182, 137.825)
+transform = Transform3D(4.99997, -0.0178023, 0, 0.0178023, 4.99997, 0, 0, 0, 5, -90.1628, -142.417, 288.266)
 
 [node name="Walls" type="Node3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -310,10 +312,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1398, 0.524216, -43.3184)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.798332, 0.524216, -53.9716)
 
 [node name="AnimatableBody3D" parent="stage5/MovingPlatform5" index="0"]
-transform = Transform3D(0.000900656, -8.07629e-05, -0.999999, -3.63798e-12, 1, -8.07628e-05, 0.999999, 7.2745e-08, 0.000900686, 0.0844574, -0.00201416, 0.0224457)
+transform = Transform3D(0.000900716, -8.07628e-05, -0.999999, -3.63798e-12, 1, -8.07628e-05, 0.999999, 7.27487e-08, 0.000900716, 0.0844574, -0.00201416, 0.0224457)
 
 [node name="PathFollow3D" parent="stage5/MovingPlatform5/Path3D" index="0"]
-transform = Transform3D(0.000900701, -8.07629e-05, -0.999999, -3.63798e-12, 1, -8.07628e-05, 0.999999, 7.27469e-08, 0.000900701, 0.0844579, -0.00201225, 0.0224438)
+transform = Transform3D(0.000900701, -8.07628e-05, -0.999999, -3.63798e-12, 1, -8.07628e-05, 0.999999, 7.27468e-08, 0.000900701, 0.0844579, -0.00201225, 0.0224438)
 
 [node name="AnimationPlayer" parent="stage5/MovingPlatform5" index="2"]
 speed_scale = 0.75
@@ -329,6 +331,18 @@ mesh = SubResource("BoxMesh_4r4ud")
 
 [node name="CollisionShape3D" parent="stage5/Platform" index="1"]
 shape = SubResource("BoxShape3D_ckkbe")
+
+[node name="MovingPlatformY" parent="stage5" instance=ExtResource("8_4251c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.621, 2.114, -86.211)
+
+[node name="MovingPlatformYDown" parent="stage5" instance=ExtResource("9_84va5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241, 26.647, -96.878)
+
+[node name="MovingPlatformYDown2" parent="stage5" instance=ExtResource("9_84va5")]
+transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 12.3137, 54.9539, -127.122)
+
+[node name="MovingPlatformY2" parent="stage5" instance=ExtResource("8_4251c")]
+transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 9.3154, 28.3641, -113.253)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
