@@ -14,10 +14,13 @@ const mouse_sense = 0.25 # mouse sensitivity
 var crouch_height = -0.75 # height camera will go down by while player is crouching
 var lerp_speed = 10.0 # helps "transition" between movements look smoother
 var player_health = 100
+var is_invincible = false
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # "hides" mouse cursor so it can't be seen
+	is_invincible = GameState.nux_mode_enabled
+	print("Player ready. Invincibility status:", is_invincible)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: # checks if player is moving mouse
@@ -69,10 +72,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func apply_damage(damage_amount: int) -> void:
-	player_health -= damage_amount
-	print("Player health: %d" % player_health)
-	if player_health <= 0:
-		die()
-		
+	if not is_invincible:
+		player_health -= damage_amount
+		print("Player health: %d" % player_health)
+		if player_health <= 0:
+			die()
+			
 func die() -> void:
 	print("Player died!")
+	get_tree().reload_current_scene()

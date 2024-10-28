@@ -132,14 +132,14 @@ size = Vector3(10, 1, 200)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mtevl"]
 size = Vector3(10, 1, 200)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cq5ol"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybt3w"]
 albedo_texture = ExtResource("2_xer16")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ihsr3"]
 material = SubResource("StandardMaterial3D_ybt3w")
 size = Vector2(400, 400)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cq5ol"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_kndyr")
@@ -588,8 +588,16 @@ autostart = true
 
 [node name="LavaFloor" type="Area3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.001, 0, 0, 0, 1, -0.0356636, -246.411, 247.85)
+collision_layer = 3
 script = ExtResource("6_nx44l")
 player = NodePath("../Player")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LavaFloor"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaFloor/StaticBody3D"]
+transform = Transform3D(400, 0, 0, 0, 1, 0, 0, 0, 400, 0, 269.924, 0)
+shape = SubResource("BoxShape3D_cq5ol")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LavaFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 272.681, 0)
