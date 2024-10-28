@@ -15,16 +15,12 @@ func _process(delta: float) -> void:
 	global_transform.origin.y += rise_speed * delta  # Move the collision shape
 	
 	if player_in_lava:
-		get_tree().reload_current_scene()
-		
 		damage_timer += delta
 		if damage_timer >= damage_interval:
 			if player.has_method("apply_damage"):
 				if player.player_health > 0:
 					player.apply_damage(lava_damage)
 					damage_timer = 0.0
-				else:
-					get_tree().reload_current_scene()
 
 func _on_body_entered(body: Node3D) -> void:
 	if body == player:

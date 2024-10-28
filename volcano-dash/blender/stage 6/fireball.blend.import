@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ckb8vyeixu76n"
-path="res://.godot/imported/rope.blend-2e5458ebce5d4532548c245980cf4c83.scn"
+uid="uid://b5dww5bhk04ur"
+path="res://.godot/imported/fireball.blend-8ec411d760e8fe3f99d6a49400d1fb1b.scn"
 
 [deps]
 
-source_file="res://blender/stage3/rope.blend"
-dest_files=["res://.godot/imported/rope.blend-2e5458ebce5d4532548c245980cf4c83.scn"]
+source_file="res://blender/stage 6/fireball.blend"
+dest_files=["res://.godot/imported/fireball.blend-8ec411d760e8fe3f99d6a49400d1fb1b.scn"]
 
 [params]
 

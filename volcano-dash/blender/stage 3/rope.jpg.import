@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0brm4dnbfdpa"
-path="res://.godot/imported/Cube Base Color.png-9293e17542920961e1a475d02501d55d.ctex"
+uid="uid://c87hwgdqvb1bf"
+path="res://.godot/imported/rope.jpg-cfae262b5c71d6f1a117a46b339119bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blender/stage3/textures/Cube Base Color.png"
-dest_files=["res://.godot/imported/Cube Base Color.png-9293e17542920961e1a475d02501d55d.ctex"]
+source_file="res://blender/stage 3/rope.jpg"
+dest_files=["res://.godot/imported/rope.jpg-cfae262b5c71d6f1a117a46b339119bb.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dxwq12dx76gxo"]
+[gd_scene load_steps=61 format=3 uid="uid://dxwq12dx76gxo"]
 
 [ext_resource type="PackedScene" uid="uid://b0qj5o4jtbi1l" path="res://Player.tscn" id="1_1fo4v"]
 [ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="1_cdsq0"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c12f1xv87ngug" path="res://blender/stage 2/platform1.blend" id="7_5sl6j"]
 [ext_resource type="PackedScene" uid="uid://tu10o6stspr5" path="res://platform.tscn" id="7_7ds3d"]
 [ext_resource type="PackedScene" uid="uid://dyinx65nu2lbu" path="res://blender/stage 4/platform.blend" id="7_j28uy"]
-[ext_resource type="PackedScene" uid="uid://ckb8vyeixu76n" path="res://blender/stage3/rope.blend" id="7_ueq58"]
+[ext_resource type="PackedScene" uid="uid://ckb8vyeixu76n" path="res://blender/stage 3/rope.blend" id="7_ueq58"]
 [ext_resource type="PackedScene" uid="uid://b08r7x2m4ab7s" path="res://moving_platform_y.tscn" id="8_4251c"]
 [ext_resource type="PackedScene" uid="uid://c2do44cj84v37" path="res://blender/stage 2/platform2.blend" id="8_hnv8t"]
 [ext_resource type="PackedScene" uid="uid://bqnl6g15fib8x" path="res://blender/stage 4/platform2.blend" id="8_twj5g"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://c25ti4lq0d1qh" path="res://blender/stage 2/platform4.blend" id="10_dny8x"]
 [ext_resource type="PackedScene" uid="uid://b7n776fa0l84p" path="res://blender/boulder/platform.blend" id="16_of7ig"]
 [ext_resource type="PackedScene" uid="uid://cq5daemfiuy72" path="res://blender/stage 6/platform1.blend" id="19_sky3c"]
+[ext_resource type="PackedScene" uid="uid://c787ks7b5346o" path="res://blender/stage 6/rope.blend" id="20_glecp"]
+[ext_resource type="PackedScene" uid="uid://cib7w7y8g1naj" path="res://fireball.tscn" id="21_x2gg6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m12kd"]
 sky_top_color = Color(0.632831, 0.452874, 0.379348, 1)
@@ -506,11 +508,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="stage6/Platform3"]
 transform = Transform3D(0.927926, -0.233157, 0.290848, 0.222484, 0.972439, 0.0697351, -0.299091, 0, 0.954225, -11.5268, -60.5775, 162.487)
+visible = false
 mesh = SubResource("BoxMesh_gwtxy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage6/Platform3"]
 transform = Transform3D(0.927926, -0.233157, 0.290848, 0.222484, 0.972439, 0.0697351, -0.299091, 0, 0.954225, -11.5268, -60.5775, 162.487)
 shape = SubResource("BoxShape3D_p3p0f")
+
+[node name="rope" parent="stage6/Platform3" instance=ExtResource("20_glecp")]
+transform = Transform3D(-0.300715, -0.230237, 0.925506, -0.071147, 0.973135, 0.218968, -0.951057, -7.16613e-11, -0.309017, -11.818, -60.9731, 162.589)
 
 [node name="Platform4" type="StaticBody3D" parent="stage6"]
 transform = Transform3D(1, 0, 0, 0, 0.994781, 0.102029, 0, -0.102029, 0.994781, 35.5174, -52.3196, 147.344)
@@ -567,6 +573,15 @@ mesh = SubResource("BoxMesh_2y3gq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage6/Platform9"]
 transform = Transform3D(0.544112, 0.620053, -0.565222, -0.223073, 0.756341, 0.614969, 0.808814, -0.208526, 0.549852, 30.5656, -24.1772, 287.044)
 shape = SubResource("BoxShape3D_mtevl")
+
+[node name="fireball" parent="stage6" instance=ExtResource("21_x2gg6")]
+transform = Transform3D(0.350207, 0, -0.936672, 0, 1, 0, 0.936672, 0, 0.350207, -39.5201, -62.169, 152.272)
+
+[node name="fireball2" parent="stage6" instance=ExtResource("21_x2gg6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.3242, -54.0299, 175.651)
+
+[node name="fireball3" parent="stage6" instance=ExtResource("21_x2gg6")]
+transform = Transform3D(0.350207, 0, -0.936672, 0, 1, 0, 0.936672, 0, 0.350207, 4.43347, -48.6086, 134.124)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

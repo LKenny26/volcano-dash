@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://cib7w7y8g1naj"]
+
+[ext_resource type="PackedScene" uid="uid://b5dww5bhk04ur" path="res://blender/stage 6/fireball.blend" id="1_nylin"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_eocba"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8k1x4"]
+radius = 5.0
+
+[sub_resource type="Curve3D" id="Curve3D_0lvpl"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0844579, -0.00201225, 0.0224438, 0, 0, 0, 0, 0, 0, 50.6988, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_dnki1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ofa4r"]
+resource_name = "horzontal_movement"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_auy84"]
+_data = {
+"RESET": SubResource("Animation_dnki1"),
+"horzontal_movement": SubResource("Animation_ofa4r")
+}
+
+[node name="fireball" type="Node3D"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+transform = Transform3D(0.000443398, -3.97562e-05, -0.999972, -1.81892e-12, 0.999993, -3.97554e-05, 0.999961, 1.76303e-08, 0.000443403, 0.0844579, -0.00201225, 0.0224438)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+visible = false
+mesh = SubResource("SphereMesh_eocba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("SphereShape3D_8k1x4")
+
+[node name="fireball" parent="AnimatableBody3D" instance=ExtResource("1_nylin")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_0lvpl")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.000443398, -3.97562e-05, -0.999972, -1.81892e-12, 0.999993, -3.97554e-05, 0.999961, 1.76303e-08, 0.000443403, 0.0844579, -0.00201225, 0.0224438)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
+remote_path = NodePath("../../../AnimatableBody3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_auy84")
+}
+autoplay = "horzontal_movement"
