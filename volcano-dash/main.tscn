@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_kndyr"]
 [ext_resource type="Texture2D" uid="uid://ckro7j20n01fa" path="res://resources/LAVAFIELDS/Lava 03 FULL.png" id="2_k1ocx"]
 [ext_resource type="Texture2D" uid="uid://cl6m421ad1w0" path="res://resources/LAVAFIELDS/Lava 01 FULL.png" id="2_xer16"]
+[ext_resource type="PackedScene" uid="uid://oeb211djm1v2" path="res://blender/stage 1/platform1.blend" id="6_5vpbs"]
 [ext_resource type="PackedScene" uid="uid://183femj1r8uw" path="res://moving_platform.tscn" id="6_bjtxj"]
 [ext_resource type="Script" path="res://lava_floor.gd" id="6_nx44l"]
 [ext_resource type="PackedScene" uid="uid://tu10o6stspr5" path="res://platform.tscn" id="7_7ds3d"]
@@ -37,10 +38,10 @@ albedo_texture = ExtResource("2_k1ocx")
 albedo_texture = ExtResource("2_xer16")
 
 [sub_resource type="BoxMesh" id="BoxMesh_lritg"]
-size = Vector3(30, 1, 400)
+size = Vector3(50, 1, 400)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t1heu"]
-size = Vector3(30, 1, 400)
+size = Vector3(50, 1, 400)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o5ue6"]
 size = Vector3(15, 1, 40)
@@ -212,13 +213,17 @@ shape = SubResource("BoxShape3D_f0q57")
 transform = Transform3D(-150, 2.26494e-05, 0, -2.26494e-05, -150, 0, 0, 0, 150, 5, -115, 250)
 
 [node name="stage1" type="StaticBody3D" parent="."]
-transform = Transform3D(0.333626, -0.0353334, 0.942043, -0.0605723, 0.996428, 0.058825, -0.940758, -0.0766872, 0.330294, 57.439, -231.311, 137.816)
+transform = Transform3D(0.333626, -0.0353334, 0.942043, -0.0605723, 0.996428, 0.058825, -0.940758, -0.0766872, 0.330294, 57.439, -231.311, 127.627)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="stage1"]
+visible = false
 mesh = SubResource("BoxMesh_lritg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage1"]
 shape = SubResource("BoxShape3D_t1heu")
+
+[node name="platform1" parent="stage1" instance=ExtResource("6_5vpbs")]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 1, 0, -1, 0, -4.37114e-08, 25, -0.5, 200)
 
 [node name="stage2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.78, -484.316, 322.365)
