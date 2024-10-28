@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://dad4g88or1x4g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wun2r"]
+size = Vector3(8, 8, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ihhc"]
+size = Vector3(8, 8, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_8onu0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0101769, 2.38419e-07, -0.000158787, 0, 0, 0, 0, 0, 0, -1, -27, -1),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_lv024"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_iao68"]
+resource_name = "new_animation"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jag3i"]
+_data = {
+"RESET": SubResource("Animation_lv024"),
+"new_animation": SubResource("Animation_iao68")
+}
+
+[node name="MovingPlatformYDown" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.703461, -0.70975, 0.0373614, 2.98019e-08, 0.0525679, 0.998608, -0.710733, -0.702489, 0.0369791, 0.0101769, 2.38419e-07, -0.000158787)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("BoxMesh_wun2r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_4ihhc")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_8onu0")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.703461, -0.70975, 0.0373614, 2.98019e-08, 0.0525679, 0.998608, -0.710733, -0.702489, 0.0369791, 0.0101769, 2.38419e-07, -0.000158787)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
+remote_path = NodePath("../../../CharacterBody3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jag3i")
+}
+autoplay = "new_animation"
