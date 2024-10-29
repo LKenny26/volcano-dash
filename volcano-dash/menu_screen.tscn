@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://gvayjdawe160"]
+[gd_scene load_steps=14 format=3 uid="uid://gvayjdawe160"]
 
 [ext_resource type="Script" path="res://menu_screen.gd" id="1_xhxec"]
 [ext_resource type="Texture2D" uid="uid://ckro7j20n01fa" path="res://resources/LAVAFIELDS/Lava 03 FULL.png" id="3_au0fx"]
 [ext_resource type="Texture2D" uid="uid://cl6m421ad1w0" path="res://resources/LAVAFIELDS/Lava 01 FULL.png" id="4_6ax8y"]
 [ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="5_lh50a"]
-[ext_resource type="AudioStream" uid="uid://bmudji4gy3frq" path="res://resources/Audio/zapsplat_nature_lava_flow_17940.mp3" id="7_7jm1g"]
 [ext_resource type="FontFile" uid="uid://c10ulqs8dtt16" path="res://resources/CHE-LAVA.TTF" id="10_pcmof"]
 [ext_resource type="Script" path="res://menu.gd" id="11_m5xm0"]
 
@@ -35,14 +34,6 @@ albedo_texture = ExtResource("4_6ax8y")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_xhxec")
-
-[node name="SFX_Lava" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.05176e-05, 0)
-stream = ExtResource("7_7jm1g")
-volume_db = 2.5
-unit_size = 1000.0
-autoplay = true
-max_distance = 2000.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s4mrm")

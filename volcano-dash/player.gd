@@ -5,22 +5,17 @@ class_name Player
 @onready var standing_collision = $StandingCollisionShape
 @onready var crouching_collision = $CrouchingCollisionShape # disabled on start
 @onready var ray_cast = $RayCast3D # will use to check if there's an obj above the user while crouching
-@onready var running_sound: AudioStreamPlayer3D = $RunningSound
-@onready var sfx_lava: AudioStreamPlayer3D = $SFX_Lava
-@onready var sfx_jump: AudioStreamPlayer3D = $SFX_Jump
-@onready var sfx_cave: AudioStreamPlayer3D = $SFX_Cave
-
-
 var curr_speed = 20.0 # will change based on if player is walking/sprinting/crouching
 const walk_speed = 20.0 # default speed
 const sprint_speed = 30.0 # speed when player sprints
 const crouch_speed = 17.0 # speed when player crouches
-const jump_velocity = 20.0
+const jump_velocity = 15.0
 const mouse_sense = 0.25 # mouse sensitivity
 var crouch_height = -0.75 # height camera will go down by while player is crouching
 var lerp_speed = 10.0 # helps "transition" between movements look smoother
 var player_health = 100
 var is_invincible = false
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # "hides" mouse cursor so it can't be seen
@@ -53,14 +48,8 @@ func _physics_process(delta: float) -> void:
 		crouching_collision.disabled = true # turn off crouching collision shape
 		if Input.is_action_pressed("sprint"):
 			curr_speed = sprint_speed
-			running_sound.pitch_scale = randf_range(1.0, 1.2)
-			var tween = get_tree().create_tween()
-			tween.tween_property($Head/Camera3D, "fov", 100, 0.5)
 		else:
 			curr_speed = walk_speed
-			running_sound.pitch_scale = randf_range(0.65, 0.75)
-			var tween = get_tree().create_tween()
-			tween.tween_property($Head/Camera3D, "fov", 70, 0.5)
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -68,7 +57,6 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_velocity
-		sfx_jump.play()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -80,12 +68,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, curr_speed)
 		velocity.z = move_toward(velocity.z, 0, curr_speed)
-		running_sound.play()
-		
+
 	move_and_slide()
-	
-	# Vary sound effects
-	sfx_lava.pitch_scale = randf_range(0.5, 1.2)
 	
 func apply_damage(damage_amount: int) -> void:
 	if not is_invincible:
