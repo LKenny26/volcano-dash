@@ -8,7 +8,8 @@ class_name Player
 var curr_speed = 20.0 # will change based on if player is walking/sprinting/crouching
 const walk_speed = 20.0 # default speed
 const sprint_speed = 30.0 # speed when player sprints
-const crouch_speed = 17.0 # speed when player crouches
+const crouch_speed = 7.0 # speed when player crouches
+
 const jump_velocity = 15.0
 const mouse_sense = 0.25 # mouse sensitivity
 var crouch_height = -0.75 # height camera will go down by while player is crouching
