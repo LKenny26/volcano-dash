@@ -32,6 +32,12 @@ func _on_timer_timeout() -> void:
 			i+=1
 
 
+func _on_completion_body_entered(body: Node3D) -> void:
+	if body == $Player:
+		$CanvasLayer.visible = true
+		get_tree().paused = true
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 func _on_collision_shape_3d_tree_entered() -> void:
 	print("Winner")
 	pass # Replace with function body.
