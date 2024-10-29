@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0qj5o4jtbi1l"]
+[gd_scene load_steps=8 format=3 uid="uid://b0qj5o4jtbi1l"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b6dl2"]
 [ext_resource type="PackedScene" uid="uid://cvcs8nqwjr14i" path="res://menus/pause_menu.tscn" id="2_tm71d"]
 [ext_resource type="AudioStream" uid="uid://r3giqp4ukkum" path="res://resources/Audio/running-6358.mp3" id="3_6wump"]
 [ext_resource type="AudioStream" uid="uid://bmudji4gy3frq" path="res://resources/Audio/zapsplat_nature_lava_flow_17940.mp3" id="4_eoa8g"]
-[ext_resource type="AudioStream" uid="uid://dk8vdqjgowcwr" path="res://resources/Audio/jumping_1-6452.mp3" id="4_h6wjc"]
-[ext_resource type="AudioStream" uid="uid://d3cjboniotufl" path="res://resources/Audio/cavernscape-25732.mp3" id="4_iq6fc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kil6x"]
 
@@ -30,28 +28,13 @@ shape = SubResource("CapsuleShape3D_vx6lj")
 disabled = true
 
 [node name="RunningSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 stream = ExtResource("3_6wump")
-volume_db = 10.0
+volume_db = 80.0
 unit_size = 1.0
 max_db = 6.0
-pitch_scale = 0.7
 autoplay = true
-max_distance = 1000.0
-
-[node name="SFX_Lava" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_eoa8g")
-volume_db = 0.5
-max_db = -10.0
-autoplay = true
-
-[node name="SFX_Cave" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_iq6fc")
-volume_db = 0.5
-autoplay = true
-
-[node name="SFX_Jump" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_h6wjc")
-volume_db = 5.0
+max_distance = 5.0
 
 [node name="Head" type="Node3D" parent="."]
 
@@ -62,3 +45,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.453238, -0.0977201)
 target_position = Vector3(0, 2, 0)
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_tm71d")]
+
+[node name="SFX_Lava" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_eoa8g")
+volume_db = 0.5
+max_db = -10.0
