@@ -8,6 +8,7 @@ class_name Player
 @onready var running_sound: AudioStreamPlayer3D = $RunningSound
 @onready var sfx_lava: AudioStreamPlayer3D = $SFX_Lava
 @onready var sfx_jump: AudioStreamPlayer3D = $SFX_Jump
+@onready var sfx_cave: AudioStreamPlayer3D = $SFX_Cave
 
 
 var curr_speed = 20.0 # will change based on if player is walking/sprinting/crouching
@@ -20,7 +21,6 @@ var crouch_height = -0.75 # height camera will go down by while player is crouch
 var lerp_speed = 10.0 # helps "transition" between movements look smoother
 var player_health = 100
 var is_invincible = false
-
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # "hides" mouse cursor so it can't be seen
@@ -81,7 +81,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, curr_speed)
 		velocity.z = move_toward(velocity.z, 0, curr_speed)
 		running_sound.play()
+		
 	move_and_slide()
+	
+	# Vary sound effects
+	sfx_lava.pitch_scale = randf_range(0.5, 1.2)
 	
 func apply_damage(damage_amount: int) -> void:
 	if not is_invincible:
