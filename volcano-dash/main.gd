@@ -40,3 +40,10 @@ func _on_collision_shape_3d_tree_entered() -> void:
 func _on_collision_shape_3d_4_tree_entered() -> void:
 	print("winner")
 	pass # Replace with function body.
+	
+	
+func _on_completion_body_entered(body: Node3D) -> void:
+	if body == $Player:
+		$CanvasLayer.visible = true
+		get_tree().paused = true
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
