@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dxwq12dx76gxo"]
+[gd_scene load_steps=65 format=3 uid="uid://dxwq12dx76gxo"]
 
 [ext_resource type="PackedScene" uid="uid://b0qj5o4jtbi1l" path="res://Player.tscn" id="1_1fo4v"]
 [ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="1_cdsq0"]
@@ -21,7 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://b7n776fa0l84p" path="res://blender/boulder/platform.blend" id="16_of7ig"]
 [ext_resource type="PackedScene" uid="uid://cq5daemfiuy72" path="res://blender/stage 6/platform1.blend" id="19_sky3c"]
 [ext_resource type="PackedScene" uid="uid://c787ks7b5346o" path="res://blender/stage 6/rope.blend" id="20_glecp"]
+[ext_resource type="PackedScene" uid="uid://vkg7glvnnn8i" path="res://blender/stage 6/platform2.blend" id="21_wtxw4"]
 [ext_resource type="PackedScene" uid="uid://cib7w7y8g1naj" path="res://fireball.tscn" id="21_x2gg6"]
+[ext_resource type="PackedScene" uid="uid://dy0dyq1t63og" path="res://blender/stage 6/platform3.blend" id="22_34toi"]
+[ext_resource type="PackedScene" uid="uid://b4f0ga1ch2fsa" path="res://blender/stage 6/platform4.blend" id="23_adipw"]
+[ext_resource type="PackedScene" uid="uid://dg8a8sp6b7f1y" path="res://blender/stage 6/platform5.blend" id="24_12u0w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m12kd"]
 sky_top_color = Color(0.632831, 0.452874, 0.379348, 1)
@@ -151,7 +155,7 @@ environment = SubResource("Environment_s4mrm")
 transform = Transform3D(1, 0, 0, 0, 0.379133, 0.925342, 0, -0.925342, 0.379133, -77.743, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_1fo4v")]
-transform = Transform3D(4.99997, -0.0178023, 0, 0.0178023, 4.99997, 0, 0, 0, 5, -110.406, -58.753, 211.714)
+transform = Transform3D(4.99997, -0.0178023, 0, 0.0178023, 4.99997, 0, 0, 0, 5, 22.0574, -46.6574, 153.062)
 
 [node name="Walls" type="Node3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -522,46 +526,61 @@ transform = Transform3D(-0.300715, -0.230237, 0.925506, -0.071147, 0.973135, 0.2
 transform = Transform3D(1, 0, 0, 0, 0.994781, 0.102029, 0, -0.102029, 0.994781, 35.5174, -52.3196, 147.344)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="stage6/Platform4"]
+visible = false
 mesh = SubResource("BoxMesh_3tkmd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage6/Platform4"]
 shape = SubResource("BoxShape3D_1g1q5")
 
+[node name="platform2" parent="stage6/Platform4" instance=ExtResource("21_wtxw4")]
+
 [node name="Platform5" type="StaticBody3D" parent="stage6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.3837, -48.9002, 146.723)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="stage6/Platform5"]
+visible = false
 mesh = SubResource("BoxMesh_vt13n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage6/Platform5"]
 shape = SubResource("BoxShape3D_2pflc")
 
+[node name="platform3" parent="stage6/Platform5" instance=ExtResource("22_34toi")]
+
 [node name="Platform6" type="StaticBody3D" parent="stage6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.0832, -44.4844, 155.775)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="stage6/Platform6"]
+visible = false
 mesh = SubResource("BoxMesh_h4b4v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage6/Platform6"]
 shape = SubResource("BoxShape3D_w4oxl")
 
+[node name="platform4" parent="stage6/Platform6" instance=ExtResource("23_adipw")]
+
 [node name="Platform7" type="StaticBody3D" parent="stage6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.2758, -40.8157, 175.427)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="stage6/Platform7"]
+visible = false
 mesh = SubResource("BoxMesh_qrb5y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage6/Platform7"]
 shape = SubResource("BoxShape3D_cmy7e")
 
+[node name="platform5" parent="stage6/Platform7" instance=ExtResource("24_12u0w")]
+
 [node name="Platform8" type="StaticBody3D" parent="stage6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.006, -37.1966, 198.957)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="stage6/Platform8"]
+visible = false
 mesh = SubResource("BoxMesh_qrb5y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage6/Platform8"]
 shape = SubResource("BoxShape3D_cmy7e")
+
+[node name="platform5" parent="stage6/Platform8" instance=ExtResource("24_12u0w")]
 
 [node name="Platform9" type="StaticBody3D" parent="stage6"]
 transform = Transform3D(0.942624, -0.333856, 0, 0.333856, 0.942624, 0, 0, 0, 1, 0, 5.46415, 0)
