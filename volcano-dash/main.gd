@@ -32,3 +32,10 @@ func _on_timer_timeout() -> void:
 			else: 
 				collisions[i].disabled = true
 			i+=1
+
+
+func _on_completion_body_entered(body: Node3D) -> void:
+	if body == $Player:
+		$CanvasLayer.visible = true
+		get_tree().paused = true
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

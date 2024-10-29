@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dxwq12dx76gxo"]
+[gd_scene load_steps=62 format=3 uid="uid://dxwq12dx76gxo"]
 
 [ext_resource type="PackedScene" uid="uid://b0qj5o4jtbi1l" path="res://Player.tscn" id="1_1fo4v"]
 [ext_resource type="PackedScene" uid="uid://dsqckauilwdb4" path="res://blender/volcano/volcano.blend" id="1_cdsq0"]
@@ -22,8 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://cq5daemfiuy72" path="res://blender/stage 6/platform1.blend" id="19_sky3c"]
 [ext_resource type="PackedScene" uid="uid://c787ks7b5346o" path="res://blender/stage 6/rope.blend" id="20_glecp"]
 [ext_resource type="PackedScene" uid="uid://cib7w7y8g1naj" path="res://fireball.tscn" id="21_x2gg6"]
-[ext_resource type="FontFile" uid="uid://c10ulqs8dtt16" path="res://resources/CHE-LAVA.TTF" id="23_euqat"]
-[ext_resource type="Script" path="res://v_box_container.gd" id="24_6eitd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m12kd"]
 sky_top_color = Color(0.632831, 0.452874, 0.379348, 1)
@@ -145,7 +143,7 @@ size = Vector2(400, 400)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2fq1k"]
 height = 1.0
-radius = 150.0
+radius = 250.0
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_kndyr")
@@ -614,14 +612,12 @@ transform = Transform3D(400, 0, 0, 0, 1, 0, 0, 0, 400, 0, 269.924, 0)
 shape = SubResource("BoxShape3D_cq5ol")
 
 [node name="Completion" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173, 33, 218.34)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173, 0, 211.34)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Completion"]
 shape = SubResource("CylinderShape3D_2fq1k")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-process_mode = 3
-visible = false
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
@@ -629,46 +625,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -571.0
-offset_top = -121.0
-offset_right = 566.0
-offset_bottom = -48.0
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.388235, 0, 0, 1)
-theme_override_fonts/font = ExtResource("23_euqat")
-theme_override_font_sizes/font_size = 70
 text = "You esacaped the volcano!"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -242.0
-offset_top = -24.0
-offset_right = 258.0
-offset_bottom = 176.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("24_6eitd")
-
-[node name="MainMenuButton" type="Button" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-text = "Restart"
-
-[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-text = "Exit"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="LavaFloor" to="LavaFloor" method="_on_body_entered"]
 [connection signal="body_exited" from="LavaFloor" to="LavaFloor" method="_on_body_exited"]
 [connection signal="body_entered" from="Completion" to="." method="_on_completion_body_entered"]
-[connection signal="body_entered" from="Completion" to="Player" method="_on_completion_body_entered"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/MainMenuButton" to="CanvasLayer/VBoxContainer" method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/QuitButton" to="CanvasLayer/VBoxContainer" method="_on_quit_button_pressed"]
 
 [editable path="stage5/MovingPlatform5"]
 [editable path="stage5/Platform"]
