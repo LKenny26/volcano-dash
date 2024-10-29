@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0qj5o4jtbi1l"]
+[gd_scene load_steps=10 format=3 uid="uid://b0qj5o4jtbi1l"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b6dl2"]
 [ext_resource type="PackedScene" uid="uid://cvcs8nqwjr14i" path="res://menus/pause_menu.tscn" id="2_tm71d"]
 [ext_resource type="AudioStream" uid="uid://r3giqp4ukkum" path="res://resources/Audio/running-6358.mp3" id="3_6wump"]
 [ext_resource type="AudioStream" uid="uid://bmudji4gy3frq" path="res://resources/Audio/zapsplat_nature_lava_flow_17940.mp3" id="4_eoa8g"]
 [ext_resource type="AudioStream" uid="uid://dk8vdqjgowcwr" path="res://resources/Audio/jumping_1-6452.mp3" id="4_h6wjc"]
+[ext_resource type="AudioStream" uid="uid://d3cjboniotufl" path="res://resources/Audio/cavernscape-25732.mp3" id="4_iq6fc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kil6x"]
 
@@ -41,6 +42,11 @@ max_distance = 1000.0
 stream = ExtResource("4_eoa8g")
 volume_db = 0.5
 max_db = -10.0
+autoplay = true
+
+[node name="SFX_Cave" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_iq6fc")
+volume_db = 0.5
 autoplay = true
 
 [node name="SFX_Jump" type="AudioStreamPlayer3D" parent="."]
